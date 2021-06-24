@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+</head>
+
+<body>
+    <div class="navigation"></div>
+
+    <div class="content">
+        <form id="todoForm">
+            <input id="taskInput" autofocus placeholder="Insert task title...">
+            <input type="checkbox" name="priority" id="priority">
+            <button type="submit">go</button>
+        </form>
+        <div id="progress">
+            <h3>In progress <span id="progressCounter">0</span></h3>
+            <ul id="progressList"></ul>
+        </div>
+        <div id="done">
+            <h3>Done <span id="doneCounter">0</span></h3>
+            <ul id="doneList"></ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="js/script.js"></script>
