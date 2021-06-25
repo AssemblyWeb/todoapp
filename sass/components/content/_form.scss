@@ -1,0 +1,25 @@
+.desktop-form--input{
+    width: 100%;
+    height: 60px;
+    color: $secondary-light;
+    background-color: $primary-dark;
+    border-radius: 12px;
+    border: none;
+}
+
+.desktop-form--checkbox{
+    right: 155px;
+    bottom: 30px;
+    z-index: 10;
+    &:before{
+        content: 'High priority';
+        margin-left: -80px;
+        color: $secondary-light;
+        font-size: 12px;
+    }
+}
+.desktop-form--submit{
+    right: 15px;
+    bottom: 30px;
+    z-index: 10;
+}

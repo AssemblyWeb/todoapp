@@ -1,0 +1,23 @@
+// Objects file
+.wrapper{
+    display: flex;
+}
+
+.aside{
+    background-color: $primary-dark;
+    padding: 20px;
+    flex: 30%;
+    height: 100vh;
+}
+.content{
+    flex: 70%;
+}
+.container{
+    max-width: 870px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+

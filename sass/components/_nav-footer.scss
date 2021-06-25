@@ -1,0 +1,36 @@
+.nav-footer{
+    width: 100vw;
+    bottom: 0;
+    background-color: $primary-dark;
+    height: 60px;
+}
+.nav-footer--menu--list{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    list-style-type: none;
+}
+.nav-footer--menu--link{
+    color: $secondary-light;
+    display: flex;
+    flex-direction: column;
+    font-size: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    &.active{
+        color: $white;
+    }
+}
+.nav-footer--menu--image{
+    max-width: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+    .nav-footer{
+        display: none;
+    }
+}

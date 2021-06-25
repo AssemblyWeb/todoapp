@@ -1,0 +1,8 @@
+// CSS reset styles. This should be the first file generating a CSS output.
+*{
+    box-sizing: border-box;
+}
+body,ul,h3{
+    margin: 0;
+    padding: 0
+}

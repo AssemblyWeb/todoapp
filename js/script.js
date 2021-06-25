@@ -24,19 +24,23 @@
      renderProgressList();
      renderDoneList();
  });
- // the array to hold the list
+ /*
+    The array to hold the list
+ */
  // let todoList = [];
 
- const form = document.getElementById('todoForm');
+ /*
+     Desktop form
+ */
+ const desktopForm = document.getElementById('desktopTodoForm');
  // Add a submit event listener
- form.addEventListener('submit', event => {
+ desktopForm.addEventListener('submit', event => {
      // prevent page refresh on form submission
      event.preventDefault();
      // select the text input
-     const input = document.getElementById('taskInput');
-     const priority = document.getElementById('priority').checked;
+     const input = document.getElementById('desktopTaskInput');
+     const priority = document.getElementById('desktopPriority').checked;
 
-     // console.log(input.value);
      // Get the value of the input and remove whitespace
      const text = input.value.trim();
      if (text == '') {
@@ -46,11 +50,38 @@
          input.value = '';
          input.focus();
          // uncheck high priority checkbox on input
-         form.reset();
+         desktopForm.reset();
      }
-
  });
 
+ /*
+     Mobile form
+ */
+ const mobileForm = document.getElementById('mobileTodoForm');
+ // Add a submit event listener
+ mobileForm.addEventListener('submit', event => {
+     // prevent page refresh on form submission
+     event.preventDefault();
+     // select the text input
+     const input = document.getElementById('mobileTaskInput');
+     const priority = document.getElementById('mobilePriority').checked;
+
+     // Get the value of the input and remove whitespace
+     const text = input.value.trim();
+     if (text == '') {
+         // alert('hola');
+     } else {
+         addTodo(text, priority);
+         input.value = '';
+         input.focus();
+         // uncheck high priority checkbox on input
+         mobileForm.reset();
+     }
+ });
+
+ /*
+     Add task to the array
+ */
  const addTodo = (text, priority) => {
      const todo = {
          text,
@@ -58,11 +89,14 @@
          done: false,
          id: Date.now(),
      };
-     todoList.push(todo);
+     //  use push instead to set the task below in the list
+     todoList.unshift(todo);
      renderProgressList();
  };
 
- // render Progress list
+ /*
+     Render progress list
+ */
  const renderProgressList = () => {
      const progressList = document.getElementById('progressList');
      const progressCounter = document.getElementById('progressCounter');
@@ -76,7 +110,9 @@
      progressList.innerHTML = progress.map(list => `<li><input type="checkbox" onClick="markDone(${list.id})">${ list.text } ${ list.priority } <span onClick="deleteTask(${list.id})">🗑</span></li>`).join('');
  }
 
- //delete task
+ /*
+     Delete task
+ */
  const deleteTask = taskId => {
      todoList = todoList.filter(item => item.id !== taskId);
      setTimeout(function () {
@@ -84,7 +120,10 @@
          renderDoneList();
      }, 300);
  }
- // mark task as done
+
+ /*
+     Mark task as Done
+ */
  const markDone = taskId => {
      todoList.map(taskList => {
          if (taskList.id === taskId) taskList.done = true
@@ -96,7 +135,9 @@
  }
 
 
- // render done list
+ /*
+     Render done list
+ */
  const renderDoneList = () => {
      const doneList = document.getElementById('doneList');
      const doneCounter = document.getElementById('doneCounter');
@@ -111,7 +152,9 @@
      // console.log(todoList);
  }
 
- // mark task as done
+ /*
+     Mark task as Undone
+ */
  const markUndone = taskId => {
      todoList.map(taskList => {
          if (taskList.id === taskId) taskList.done = false
@@ -120,4 +163,28 @@
          renderProgressList();
          renderDoneList();
      }, 500);
+ }
+
+ /*
+     Launch the modal on mobile
+     adapted from: https://www.w3schools.com/howto/howto_css_modals.asp
+ */
+ const modal = document.getElementById("myModal");
+ const btn = document.getElementById("myBtn");
+
+ // When the user clicks on the button, open the modal
+ const openModal = () => {
+     modal.style.display = "block";
+ }
+ // Get the <span> element that closes the modal
+ var span = document.getElementsByClassName("close")[0];
+ // When the user clicks on <span> (x), close the modal
+ span.onclick = () => {
+     modal.style.display = "none";
+ }
+ // When the user clicks anywhere outside of the modal, close it
+ window.onclick = (event) => {
+     if (event.target == modal) {
+         modal.style.display = "none";
+     }
  }

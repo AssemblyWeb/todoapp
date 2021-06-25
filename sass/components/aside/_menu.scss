@@ -1,0 +1,41 @@
+.aside{
+    max-width: 330px;
+}
+.aside--menu, .aside--logo{
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.aside--menu--list{
+    margin-top: 99px;
+    list-style-type: none;
+}
+.aside--menu--link{
+    display: flex;
+    align-items: center;
+    color: $secondary-light;
+    margin-bottom: 10px;
+    padding: 13px 80px 13px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    &.active{
+        background-color: $primary-light;
+        color: $white;
+    }
+}
+.aside--menu--image{
+    margin-right: 10px;
+}
+.aside--menu--counter{
+    background-color: $white;
+    border-radius: 10px;
+    font-size: 12px;
+    padding: 1.65px 7.5px;
+    color: $primary-dark;
+    right: 20px;
+}
+@media screen and (max-width: $breakpoint-mobile) {
+    .aside{
+        display: none;
+    }
+}

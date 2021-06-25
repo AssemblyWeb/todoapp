@@ -6,27 +6,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO</title>
+    <link rel="stylesheet" type="text/css" href="css/min/main.min.css" />
 </head>
 
 <body>
-    <div class="navigation"></div>
+    <div class="wrapper">
 
-    <div class="content">
-        <form id="todoForm">
-            <input id="taskInput" autofocus placeholder="Insert task title...">
-            <input type="checkbox" name="priority" id="priority">
-            <button type="submit">go</button>
-        </form>
-        <div id="progress">
-            <h3>In progress <span id="progressCounter">0</span></h3>
-            <ul id="progressList"></ul>
+        <!-- navigation aside -->
+        <div class="aside">
+            <div class="aside--logo fontweight-bold">MyTrack</div>
+            <div class="aside--menu">
+                <ul class="aside--menu--list">
+                    <li class="aside--menu--link relative active"><img src="img/icon-dashboard.svg" class="aside--menu--image filter-white" alt="icon dashboard">Dashboard <span class="aside--menu--counter absolute">5/6</span></li>
+                    <li class="aside--menu--link"><img src="img/icon-calendar.svg" class="aside--menu--image" alt="icon calendar"> Calendar</li>
+                    <li class="aside--menu--link"><img src="img/icon-teams.svg" class="aside--menu--image" alt="icon teams"> Teams</li>
+                    <li class="aside--menu--link"><img src="img/icon-charts.svg" class="aside--menu--image" alt="icon charts"> Charts</li>
+                    <!-- <li class="aside--menu--link"><img src="img/icon-settings.svg" class="aside--menu--image" alt="icon settings"> settings</li> -->
+                </ul>
+            </div>
+            <div class="aside--settings"><img src="img/icon-settings.svg" class="aside--menu--image" alt="icon settings"> Settings</div>
         </div>
-        <div id="done">
-            <h3>Done <span id="doneCounter">0</span></h3>
-            <ul id="doneList"></ul>
+        <!-- app content -->
+        <div class="content">
+            <div class="container">
+            <section id="form">
+                <!-- mobile form -->
+                <button onClick="openModal()" id="myBtn" class="btn-modal">Open Modal</button>
+                <!-- Modal-->
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <form id="mobileTodoForm">
+                            <input id="mobileTaskInput" autofocus placeholder="Insert task title...">
+                            <input id="mobilePriority" type="checkbox" name="priority">
+                            <button type="submit">go</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- dekstop form -->
+                <h3>New Task</h3>
+                <form id="desktopTodoForm" class="desktop-form relative">
+                    <input id="desktopTaskInput" class="desktop-form--input relative" autofocus placeholder="Insert task title...">
+                    <input id="desktopPriority" class="desktop-form--checkbox absolute" type="checkbox" name="priority">
+                    <button type="submit" class="desktop-form--submit absolute">ADD</button>
+                </form>
+            </section>
+            <!-- section progress -->
+            <section id="progress">
+                <h3>In progress <span id="progressCounter">0</span></h3>
+                <ul id="progressList"></ul>
+            </section>
+            <!-- section done -->
+            <section id="done">
+                <h3>Done <span id="doneCounter">0</span></h3>
+                <ul id="doneList"></ul>
+            </section>
+             </div>
+        </div>
+    </div><!-- end of .wrapper-->
+    <!-- nav footer -->
+    <div class="nav-footer absolute">
+        <div class="nav-footer--menu">
+            <ul class="nav-footer--menu--list">
+                <li class="nav-footer--menu--link active"><img src="img/icon-dashboard.svg" class="nav-footer--menu--image filter-white" alt="icon dashboard">Dashboard</li>
+                <li class="nav-footer--menu--link"><img src="img/icon-calendar.svg" class="nav-footer--menu--image" alt="icon calendar">Calendar</li>
+                <li class="nav-footer--menu--link"><img src="img/icon-teams.svg" class="nav-footer--menu--image" alt="icon teams">Teams</li>
+                <li class="nav-footer--menu--link"><img src="img/icon-charts.svg" class="nav-footer--menu--image" alt="icon charts">Charts</li>
+                <li class="nav-footer--menu--link"><img src="img/icon-settings.svg" class="nav-footer--menu--image" alt="icon settings">Settings</li>
+            </ul>
         </div>
     </div>
-
 </body>
 
 </html>

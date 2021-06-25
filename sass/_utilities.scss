@@ -1,0 +1,33 @@
+//  Keep specific classes that have some functionality
+.fontcolor-white{
+    color: $white;
+}
+.fontcolor-primarylight{
+    color: $primary-light;
+}
+
+
+// font weight
+.fontweight-regular{
+    font-weight: 400;
+}
+.fontweight-medium{
+    font-weight: 500;
+}
+.fontweight-semibold{
+    font-weight: 600;
+}
+.fontweight-bold{
+    font-weight: 700;
+}
+// position
+.absolute{
+    position: absolute;
+}
+.relative{
+    position: relative;
+}
+// svg filters
+.filter-white{
+    filter:  brightness(150%);
+}
