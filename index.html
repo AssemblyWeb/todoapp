@@ -17,7 +17,7 @@
             <div class="aside--logo fontweight-bold">MyTrack</div>
             <div class="aside--menu">
                 <ul class="aside--menu--list">
-                    <li class="aside--menu--link relative active"><img src="img/icon-dashboard.svg" class="aside--menu--image filter-white" alt="icon dashboard">Dashboard <span class="aside--menu--counter absolute">5/6</span></li>
+                    <li class="aside--menu--link relative active"><img src="img/icon-dashboard.svg" class="aside--menu--image filter-white" alt="icon dashboard">Dashboard <span id="asideCounter" class="aside--menu--counter absolute">0</span></li>
                     <li class="aside--menu--link"><img src="img/icon-calendar.svg" class="aside--menu--image" alt="icon calendar"> Calendar</li>
                     <li class="aside--menu--link"><img src="img/icon-teams.svg" class="aside--menu--image" alt="icon teams"> Teams</li>
                     <li class="aside--menu--link"><img src="img/icon-charts.svg" class="aside--menu--image" alt="icon charts"> Charts</li>
@@ -29,37 +29,41 @@
         <!-- app content -->
         <div class="content">
             <div class="container">
+            <div class="content--logo fontweight-bold">MyTrack</div>
             <section id="form">
                 <!-- mobile form -->
-                <button onClick="openModal()" id="myBtn" class="btn-modal">Open Modal</button>
+                <button onClick="openModal()" id="myBtn" class="btn btn-modal">New task <span>＋</span></button>
                 <!-- Modal-->
                 <div id="myModal" class="modal">
                     <!-- Modal content -->
                     <div class="modal-content">
                         <span class="close">&times;</span>
                         <form id="mobileTodoForm">
-                            <input id="mobileTaskInput" autofocus placeholder="Insert task title...">
+                            <input id="mobileTaskInput" onkeyup="checkForm();" required placeholder="Insert task title...">
                             <input id="mobilePriority" type="checkbox" name="priority">
-                            <button type="submit">go</button>
+                            <button id="mobileSubmit" class="btn btn-disabled" type="submit">ADD</button>
                         </form>
                     </div>
                 </div>
                 <!-- dekstop form -->
-                <h3>New Task</h3>
+                <h3 class="newtask-title">New Task</h3>
                 <form id="desktopTodoForm" class="desktop-form relative">
-                    <input id="desktopTaskInput" class="desktop-form--input relative" autofocus placeholder="Insert task title...">
-                    <input id="desktopPriority" class="desktop-form--checkbox absolute" type="checkbox" name="priority">
-                    <button type="submit" class="desktop-form--submit absolute">ADD</button>
+                    <input required id="desktopTaskInput" onkeyup="checkForm();" class="desktop-form--input relative" placeholder="Insert task title...">
+                    <span class="desktop-form--checkbox absolute">
+                        <input id="desktopPriority" class="toggle-switch" type="checkbox" name="priority">
+                        <label for="desktopPriority">Toggle</label>
+                    </span>
+                    <button id="desktopSubmit" type="submit" class="desktop-form--submit btn btn-disabled absolute">ADD</button>
                 </form>
             </section>
             <!-- section progress -->
             <section id="progress">
-                <h3>In progress <span id="progressCounter">0</span></h3>
+                <h3>In progress <span id="progressCounter" class="content--counter">0</span></h3>
                 <ul id="progressList"></ul>
             </section>
             <!-- section done -->
             <section id="done">
-                <h3>Done <span id="doneCounter">0</span></h3>
+                <h3>Done <span id="doneCounter" class="content--counter">0</span></h3>
                 <ul id="doneList"></ul>
             </section>
              </div>

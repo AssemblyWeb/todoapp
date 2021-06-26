@@ -1,8 +1,9 @@
 .nav-footer{
     width: 100vw;
     bottom: 0;
-    background-color: $primary-dark;
+    background-color: $shape-dark;
     height: 60px;
+    z-index: 10;
 }
 .nav-footer--menu--list{
     margin-top: 10px;
@@ -12,7 +13,7 @@
     list-style-type: none;
 }
 .nav-footer--menu--link{
-    color: $secondary-light;
+    color: $text-light;
     display: flex;
     flex-direction: column;
     font-size: 8px;

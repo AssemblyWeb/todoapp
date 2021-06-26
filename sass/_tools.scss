@@ -1,5 +1,8 @@
 // Tools file
 // Mixins and functions.
-@mixin highlight-text{
-    font-weight: bolder;
- }
+@mixin crossBrowser($property, $val){
+    -webkit-#{$property}: $val;
+    -moz-#{$property}: $val;
+    -ms-#{$property}: $val;
+    #{$property}: $val;
+  }

@@ -1,25 +1,96 @@
-.desktop-form--input{
+// input
+.desktop-form--input {
     width: 100%;
     height: 60px;
-    color: $secondary-light;
-    background-color: $primary-dark;
+    background-color: $shape-dark;
     border-radius: 12px;
     border: none;
+    color: $white;
+    font-size: 16px;
+    padding-left: 19px;
+    &::placeholder {
+        color: $CTA_disabled;
+        font-weight: 500;
+        // transition: all ease 0.5s
+    }
+
+    &:focus::placeholder {
+        color: transparent;
+    }
+
+    // change input background on autocomplete
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px $shape-dark inset;
+    }
+
+    // TODO: change autocomplete background color
 }
 
-.desktop-form--checkbox{
-    right: 155px;
-    bottom: 30px;
+// submit btn
+.desktop-form--submit {
+    right: 10px;
+    bottom: 10px;
     z-index: 10;
-    &:before{
-        content: 'High priority';
-        margin-left: -80px;
-        color: $secondary-light;
-        font-size: 12px;
-    }
 }
-.desktop-form--submit{
-    right: 15px;
-    bottom: 30px;
+
+// checkbox position
+.desktop-form--checkbox {
+    right: 20%;
+    bottom: 14px;
     z-index: 10;
+}
+
+// toggle
+.toggle-switch:after {
+    content: 'High priority';
+    position: relative;
+    left: -80px;
+    top: 15px;
+    color: white;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.toggle-switch[type=checkbox] {
+    height: 0;
+    width: 20px;
+    // visibility: hidden;
+}
+
+.toggle-switch+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 60px;
+    height: 32px;
+    background: $secondary-dark;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+.toggle-switch+label:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    width: 26px;
+    height: 26px;
+    background: $CTA_disabled;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+.toggle-switch:checked+label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+    background: $text-light;
+    // use green to improve UX
+    // background: $SUCCESS;
+}
+
+.toggle-switch+label:active:after {
+    width: 40px;
 }

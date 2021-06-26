@@ -13,27 +13,20 @@
 .aside--menu--link{
     display: flex;
     align-items: center;
-    color: $secondary-light;
+    color: $text-light;
     margin-bottom: 10px;
     padding: 13px 80px 13px 20px;
     border-radius: 12px;
     cursor: pointer;
     &.active{
-        background-color: $primary-light;
+        background-color: $CTA_disabled;
         color: $white;
     }
 }
 .aside--menu--image{
     margin-right: 10px;
 }
-.aside--menu--counter{
-    background-color: $white;
-    border-radius: 10px;
-    font-size: 12px;
-    padding: 1.65px 7.5px;
-    color: $primary-dark;
-    right: 20px;
-}
+
 @media screen and (max-width: $breakpoint-mobile) {
     .aside{
         display: none;

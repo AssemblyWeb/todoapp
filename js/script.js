@@ -23,6 +23,7 @@
  window.addEventListener('DOMContentLoaded', (event) => {
      renderProgressList();
      renderDoneList();
+     asideCounter();
  });
  /*
     The array to hold the list
@@ -33,6 +34,7 @@
      Desktop form
  */
  const desktopForm = document.getElementById('desktopTodoForm');
+
  // Add a submit event listener
  desktopForm.addEventListener('submit', event => {
      // prevent page refresh on form submission
@@ -51,6 +53,7 @@
          input.focus();
          // uncheck high priority checkbox on input
          desktopForm.reset();
+         checkForm();
      }
  });
 
@@ -76,9 +79,34 @@
          input.focus();
          // uncheck high priority checkbox on input
          mobileForm.reset();
+         checkForm();
+         closeModal();
      }
  });
+ // enables button  
+ const checkForm = () => {
+    // desktop
+    const desktopInput = document.getElementById('desktopTaskInput').value;
+    const desktopSubmitButton = document.getElementById('desktopSubmit');
+    if(desktopInput == ''){
+        desktopSubmitButton.classList.add("btn-disabled");
+        desktopSubmitButton.classList.remove("btn-active");
+    }else{
+        desktopSubmitButton.classList.add("btn-active");
+        desktopSubmitButton.classList.remove("btn-disabled");
+    }
+    // mobile
+    const mobileInput = document.getElementById('mobileTaskInput').value;
+    const mobileSubmitButton = document.getElementById('mobileSubmit');
 
+    if(mobileInput == ''){
+        mobileSubmitButton.classList.add("btn-disabled");
+        mobileSubmitButton.classList.remove("btn-active");
+    }else{
+        mobileSubmitButton.classList.add("btn-active");
+        mobileSubmitButton.classList.remove("btn-disabled");
+    }
+}
  /*
      Add task to the array
  */
@@ -92,6 +120,7 @@
      //  use push instead to set the task below in the list
      todoList.unshift(todo);
      renderProgressList();
+     asideCounter();
  };
 
  /*
@@ -109,6 +138,18 @@
      // after a check, iterates the list to render
      progressList.innerHTML = progress.map(list => `<li><input type="checkbox" onClick="markDone(${list.id})">${ list.text } ${ list.priority } <span onClick="deleteTask(${list.id})">🗑</span></li>`).join('');
  }
+
+ /*
+     Render aside counter
+ */
+const asideCounter = () =>{
+    const asideCounter = document.getElementById('asideCounter');
+
+    let progress = todoList.filter(todoList => todoList.done == false).length;
+    let allTask = todoList.length;
+
+    asideCounter.innerHTML = progress + "/" + allTask;
+}
 
  /*
      Delete task
@@ -131,6 +172,7 @@
      setTimeout(function () {
          renderProgressList();
          renderDoneList();
+         asideCounter();
      }, 500);
  }
 
@@ -162,6 +204,7 @@
      setTimeout(function () {
          renderProgressList();
          renderDoneList();
+         asideCounter();
      }, 500);
  }
 
@@ -177,14 +220,23 @@
      modal.style.display = "block";
  }
  // Get the <span> element that closes the modal
- var span = document.getElementsByClassName("close")[0];
+ var modalSpan = document.getElementsByClassName("close")[0];
  // When the user clicks on <span> (x), close the modal
- span.onclick = () => {
-     modal.style.display = "none";
+ modalSpan.onclick = () => {
+    closeModal();
  }
  // When the user clicks anywhere outside of the modal, close it
  window.onclick = (event) => {
      if (event.target == modal) {
-         modal.style.display = "none";
+        closeModal();
      }
  }
+
+ const closeModal = () =>{
+    modal.style.display = "none";
+ }
+
+ 
+
+
+
