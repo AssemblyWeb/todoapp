@@ -136,7 +136,7 @@
      // sort high priority
      progress.sort((a, b) => b.priority - a.priority);
      // after a check, iterates the list to render
-     progressList.innerHTML = progress.map(list => `<li><input type="checkbox" onClick="markDone(${list.id})">${ list.text } ${ list.priority } <span onClick="deleteTask(${list.id})">🗑</span></li>`).join('');
+     progressList.innerHTML = progress.map(list => `<li id="${list.id}" class="task"><input type="checkbox" onClick="markDone(${list.id})"><span class="task--priority ${highPriority(list.priority)}"></span>${ list.text } <img class="task-remove" onClick="deleteTask(${list.id})" src="../img/icon-trash.svg"/></li>`).join('');
  }
 
  /*
@@ -150,12 +150,18 @@ const asideCounter = () =>{
 
     asideCounter.innerHTML = progress + "/" + allTask;
 }
-
+ /*
+     Set color of Priority
+ */
+const highPriority = priority => {
+    if(priority) return 'high-priority'; 
+}
  /*
      Delete task
  */
  const deleteTask = taskId => {
      todoList = todoList.filter(item => item.id !== taskId);
+     deleteAnimation(taskId);
      setTimeout(function () {
          renderProgressList();
          renderDoneList();
@@ -190,7 +196,7 @@ const asideCounter = () =>{
      // sort high priority
      done.sort((a, b) => b.priority - a.priority);
      // after a check, iterates the list to render
-     doneList.innerHTML = done.map(list => `<li><input type="checkbox" checked onClick="markUndone(${list.id})">${ list.text } ${ list.priority } <span onClick="deleteTask(${list.id})">🗑</span></li>`).join('');
+     doneList.innerHTML = done.map(list => `<li id="${list.id}" class="task task--done"><input type="checkbox" checked onClick="markUndone(${list.id})"><span class="task--priority ${highPriority(list.priority)}"></span>${ list.text }  <img class="task-remove" onClick="deleteTask(${list.id})" src="../img/icon-trash.svg"/></li>`).join('');
      // console.log(todoList);
  }
 
@@ -236,7 +242,14 @@ const asideCounter = () =>{
     modal.style.display = "none";
  }
 
- 
+/*
+    Delete animation
+*/
+const deleteAnimation = taskId => {
+    const task = document.getElementById(taskId);
+    task.classList.add('delete-animation');
+
+}
 
 
 

@@ -1,0 +1,84 @@
+.progress--list, .done--list{
+    list-style-type: none;
+}
+.task-remove{
+    opacity: 0;
+    transition: all ease 0.3s;
+    margin-left: auto;
+    margin-right: 31.67px;
+}
+.task{
+    color: $text-light;
+    background-color: $shape-dark;
+    height: 60px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    @include crossBrowser(transition, all .2s ease-in-out);
+    & span{
+        // display: none;
+        // margin-left: 30px;
+    }
+
+    & input{
+        height: 20px;
+        width: 20px;
+        border: solid 1px $text-light;
+        background: $shape-dark;
+        margin-right: 8.67px;
+        cursor: pointer;
+    }
+    &:hover{
+        @include crossBrowser(transform, scale(1.03));
+
+    }
+    &:hover .task-remove{
+        opacity: 1;
+
+    }
+}
+
+.task--priority{
+    height: 8.67px;
+    width: 8.67px;
+    border-radius: 50%;
+    margin-right: 8.67px;
+    background: $CTA_disabled;
+    &.high-priority{
+        background: $DANGER;
+    }
+}
+// task done
+// @keyframes strike{
+//     0%   { width : 0; }
+//     100% { width: 100%; }
+//   }
+
+.task--done{
+    // position: relative;
+    color: $CTA_disabled;
+    text-decoration: line-through;
+}
+// .task--done::after {
+//     content: ' ';
+//     position: absolute;
+//     top: 50%;
+//     left: 0;
+//     width: 100%;
+//     height: 1px;
+//     background: black;
+//     animation-name: strike;
+//     animation-duration: 4s;
+//     animation-timing-function: linear;
+//     animation-iteration-count: 1;
+//     animation-fill-mode: forwards; 
+//   }
+
+//delete animation
+.task.delete-animation{
+transform: translateX(-100%);
+transition: all ease 0.3s;
+    opacity: 0;
+}

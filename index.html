@@ -21,10 +21,9 @@
                     <li class="aside--menu--link"><img src="img/icon-calendar.svg" class="aside--menu--image" alt="icon calendar"> Calendar</li>
                     <li class="aside--menu--link"><img src="img/icon-teams.svg" class="aside--menu--image" alt="icon teams"> Teams</li>
                     <li class="aside--menu--link"><img src="img/icon-charts.svg" class="aside--menu--image" alt="icon charts"> Charts</li>
-                    <!-- <li class="aside--menu--link"><img src="img/icon-settings.svg" class="aside--menu--image" alt="icon settings"> settings</li> -->
                 </ul>
             </div>
-            <div class="aside--settings"><img src="img/icon-settings.svg" class="aside--menu--image" alt="icon settings"> Settings</div>
+            <div class="aside--settings"><span class="aside--settings--link"><img src="img/icon-settings.svg" class="aside--menu--image" alt="icon settings"> Settings</span></div>
         </div>
         <!-- app content -->
         <div class="content">
@@ -37,12 +36,17 @@
                 <div id="myModal" class="modal">
                     <!-- Modal content -->
                     <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <form id="mobileTodoForm">
-                            <input id="mobileTaskInput" onkeyup="checkForm();" required placeholder="Insert task title...">
-                            <input id="mobilePriority" type="checkbox" name="priority">
-                            <button id="mobileSubmit" class="btn btn-disabled" type="submit">ADD</button>
-                        </form>
+                        <div class="modal-header">
+                            <div class="modal--header--title">new task</div>
+                            <span class="close">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <form id="mobileTodoForm">
+                                <input id="mobileTaskInput" onkeyup="checkForm();" required placeholder="Insert task title...">
+                                <input id="mobilePriority" type="checkbox" name="priority">
+                                <button id="mobileSubmit" class="btn btn-disabled" type="submit">ADD</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <!-- dekstop form -->
@@ -59,18 +63,18 @@
             <!-- section progress -->
             <section id="progress">
                 <h3>In progress <span id="progressCounter" class="content--counter">0</span></h3>
-                <ul id="progressList"></ul>
+                <ul id="progressList" class="progress--list"></ul>
             </section>
             <!-- section done -->
             <section id="done">
                 <h3>Done <span id="doneCounter" class="content--counter">0</span></h3>
-                <ul id="doneList"></ul>
+                <ul id="doneList" class="done--list"></ul>
             </section>
              </div>
         </div>
     </div><!-- end of .wrapper-->
     <!-- nav footer -->
-    <div class="nav-footer absolute">
+    <div class="nav-footer">
         <div class="nav-footer--menu">
             <ul class="nav-footer--menu--list">
                 <li class="nav-footer--menu--link active"><img src="img/icon-dashboard.svg" class="nav-footer--menu--image filter-white" alt="icon dashboard">Dashboard</li>

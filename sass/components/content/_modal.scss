@@ -10,11 +10,10 @@
   }
 }
 
-
-
 // adapted from https://www.w3schools.com/howto/howto_css_modals.asp
 .btn-modal, .modal{
     display: none;
+    display: block;
 }
 @media screen and (max-width: $breakpoint-mobile) {
     .desktop-form, .newtask-title{
@@ -40,17 +39,16 @@
       .modal-content {
         background-color: #fefefe;
         margin: 15% auto; /* 15% from the top and centered */
-        padding: 20px;
-        border: 1px solid #888;
+        padding: 10px 25px 25px 25px;
+        border-radius: 12px;
+        // border: 1px solid #888;
         width: 80%; /* Could be more or less, depending on screen size */
       }
       
       /* The Close Button */
       .close {
-        color: #aaa;
-        float: right;
+        color: $white;
         font-size: 28px;
-        font-weight: bold;
         &:hover,
         &:focus {
           color: black;
@@ -59,4 +57,30 @@
         }   
       }
       
+}
+
+// modal content
+.modal-content{
+  background: $shape-dark;
+  display: flex;
+  flex-direction: column;
+}
+.modal-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.modal-header .close{
+  margin-left: auto;
+}
+.modal--header--title{
+  color: $white;
+}
+.modal-body{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#mobileTaskInput{
+  flex: 1 100%;
 }
