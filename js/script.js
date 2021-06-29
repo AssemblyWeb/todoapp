@@ -136,7 +136,7 @@
      // sort high priority
      progress.sort((a, b) => b.priority - a.priority);
      // after a check, iterates the list to render
-     progressList.innerHTML = progress.map(list => `<li id="${list.id}" class="task"><input type="checkbox" onClick="markDone(${list.id})"><span class="task--priority ${highPriority(list.priority)}"></span>${ list.text } <img class="task-remove" onClick="deleteTask(${list.id})" src="../img/icon-trash.svg"/></li>`).join('');
+     progressList.innerHTML = progress.map(list => `<li id="${list.id}" class="task"><input class="task--checkbox" type="checkbox" onClick="markDone(${list.id})"><span class="task--priority ${highPriority(list.priority)}"></span><span onClick="modalTask(${list.id})">${ list.text }</span><img class="task-remove" onClick="deleteTask(${list.id})" src="../img/icon-trash.svg"/></li>`).join('');
  }
 
  /*
@@ -175,7 +175,7 @@ const highPriority = priority => {
      todoList.map(taskList => {
          if (taskList.id === taskId) taskList.done = true
      });
-     setTimeout(function () {
+     setTimeout( () => {
          renderProgressList();
          renderDoneList();
          asideCounter();
@@ -196,7 +196,7 @@ const highPriority = priority => {
      // sort high priority
      done.sort((a, b) => b.priority - a.priority);
      // after a check, iterates the list to render
-     doneList.innerHTML = done.map(list => `<li id="${list.id}" class="task task--done"><input type="checkbox" checked onClick="markUndone(${list.id})"><span class="task--priority ${highPriority(list.priority)}"></span>${ list.text }  <img class="task-remove" onClick="deleteTask(${list.id})" src="../img/icon-trash.svg"/></li>`).join('');
+     doneList.innerHTML = done.map(list => `<li id="${list.id}" class="task task--done"><input class="task--checkbox" type="checkbox" checked onClick="markUndone(${list.id})"><span class="task--priority ${highPriority(list.priority)}"></span><span onClick="modalTask(${list.id})">${ list.text }</span><img class="task-remove" onClick="deleteTask(${list.id})" src="../img/icon-trash.svg"/></li>`).join('');
      // console.log(todoList);
  }
 
@@ -207,39 +207,11 @@ const highPriority = priority => {
      todoList.map(taskList => {
          if (taskList.id === taskId) taskList.done = false
      });
-     setTimeout(function () {
+     setTimeout( () => {
          renderProgressList();
          renderDoneList();
          asideCounter();
      }, 500);
- }
-
- /*
-     Launch the modal on mobile
-     adapted from: https://www.w3schools.com/howto/howto_css_modals.asp
- */
- const modal = document.getElementById("myModal");
- const btn = document.getElementById("myBtn");
-
- // When the user clicks on the button, open the modal
- const openModal = () => {
-     modal.style.display = "block";
- }
- // Get the <span> element that closes the modal
- var modalSpan = document.getElementsByClassName("close")[0];
- // When the user clicks on <span> (x), close the modal
- modalSpan.onclick = () => {
-    closeModal();
- }
- // When the user clicks anywhere outside of the modal, close it
- window.onclick = (event) => {
-     if (event.target == modal) {
-        closeModal();
-     }
- }
-
- const closeModal = () =>{
-    modal.style.display = "none";
  }
 
 /*
@@ -251,5 +223,108 @@ const deleteAnimation = taskId => {
 
 }
 
+ /*
+     Launch the modal on mobile
+     adapted from: https://www.w3schools.com/howto/howto_css_modals.asp
+ */
+     const modal = document.getElementById("modalInput");
+     const btn = document.getElementById("btnModal");
+    
+     // When the user clicks on the button, open the modal
+     const openModal = () => {
+        modal.classList.add('modal-animation');
+        //  modal.style.display = "block";
+     }
+     // Get the <span> element that closes the modal
+     const modalSpan = document.getElementById('inputTask-close');
+     // When the user clicks on <span> (x), close the modal
+     modalSpan.onclick = () => {
+        closeModal();
+     }
+     // When the user clicks anywhere outside of the modal, close it
+     window.onclick = (event) => {
+         if (event.target == modal) {
+            closeModal();
+         }
+     }
+    
+     const closeModal = () =>{
+        // modal.style.display = "none";
+        modal.classList.remove('modal-animation');
+     }
 
 
+/*
+    modal task
+ */
+const modalTask = id => {
+     const breakpointMobile = "736";
+     const width = window.innerWidth;
+     const modalTask = document.getElementById('modalTask');
+     if(width < breakpointMobile){
+                modalTask.classList.add('modal-animation');
+                renderModalTask(id);
+    }
+
+  // Get the <span> element that closes the modal
+  const modalSpanClose = document.getElementById('modalTask-close');
+  // When the user clicks on <span> (x), close the modal
+  modalSpanClose.onclick = () => {
+     closeModalTask();
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = (event) => {
+      if (event.target == modalTask) {
+         closeModalTask();
+      }
+  }
+ 
+  const closeModalTask = () => {
+     modalTask.classList.remove('modal-animation');
+  }
+
+};
+
+const renderModalTask = taskId => {
+    const modalTaskText = document.getElementById('modalTaskText');
+    const modalTaskPriority = document.getElementById('modalTaskPriority');
+    const modalTaskTrash = document.getElementById('modalTaskTrash');
+    const modalTaskComplete = document.getElementById('modalTaskComplete');
+    // console.log(taska[0].text);
+    let task = todoList.filter(task => task.id == taskId);
+    
+    // check priority
+    task[0].priority ? modalTaskPriority.classList.add('high-priority') : modalTaskPriority.classList.remove('high-priority');
+    // add the text 
+    modalTaskText.innerHTML = task[0].text;
+    // make the trash button
+    modalTaskTrash.innerHTML = `<button class="btn modalTask--btn-trash" onClick="deleteTaskModal(${taskId})"><img src="../img/icon-trash.svg"/></button>`;
+    //check if task is completed
+    // console.log(task[0].done);
+    if(task[0].done == true){
+        modalTaskComplete.innerHTML = `<button class="btn btn-danger" onClick="incompleteTaskModal(${taskId})">INCOMPLETE</button>`;
+    }else{
+        modalTaskComplete.innerHTML = `<button class="btn btn-success" onClick="completeTaskModal(${taskId})">COMPLETE</button>`;
+    }
+    //make the complete button
+}
+
+//delete task and close modal
+const deleteTaskModal = taskId =>{
+    const modalTask = document.getElementById('modalTask');
+    deleteTask(taskId);
+    modalTask.classList.remove('modal-animation');
+}
+
+//complete task and close modal
+const completeTaskModal = taskId =>{
+    const modalTask = document.getElementById('modalTask');
+    markDone(taskId);
+    modalTask.classList.remove('modal-animation');
+}
+//incomplete task and close modal
+const incompleteTaskModal = taskId =>{
+    const modalTask = document.getElementById('modalTask');
+    markUndone(taskId);
+    modalTask.classList.remove('modal-animation');
+}

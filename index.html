@@ -31,24 +31,8 @@
             <div class="content--logo fontweight-bold">MyTrack</div>
             <section id="form">
                 <!-- mobile form -->
-                <button onClick="openModal()" id="myBtn" class="btn btn-modal">New task <span>＋</span></button>
-                <!-- Modal-->
-                <div id="myModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="modal--header--title">new task</div>
-                            <span class="close">&times;</span>
-                        </div>
-                        <div class="modal-body">
-                            <form id="mobileTodoForm">
-                                <input id="mobileTaskInput" onkeyup="checkForm();" required placeholder="Insert task title...">
-                                <input id="mobilePriority" type="checkbox" name="priority">
-                                <button id="mobileSubmit" class="btn btn-disabled" type="submit">ADD</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <button onClick="openModal()" id="btnModal" class="btn btn-modal">New task <span>＋</span></button>
+
                 <!-- dekstop form -->
                 <h3 class="newtask-title">New Task</h3>
                 <form id="desktopTodoForm" class="desktop-form relative">
@@ -83,6 +67,50 @@
                 <li class="nav-footer--menu--link"><img src="img/icon-charts.svg" class="nav-footer--menu--image" alt="icon charts">Charts</li>
                 <li class="nav-footer--menu--link"><img src="img/icon-settings.svg" class="nav-footer--menu--image" alt="icon settings">Settings</li>
             </ul>
+        </div>
+    </div>
+    <!-- modal -->
+    <!-- Modal input-->
+    <div id="modalInput" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal--header--title">new task</div>
+                <span id="inputTask-close" class="close">&times;</span>
+            </div>
+            <hr class="modal--hr">
+            <div class="modal-body">
+                <form id="mobileTodoForm" class="mobile-form relative">
+                    <input id="mobileTaskInput" class="mobile-form--input" onkeyup="checkForm();" required placeholder="Insert task title...">
+                    <div class="modal-footer">
+                        <span class="mobile-form--checkbox">
+                            <input class="toggle-switch relative" id="mobilePriority" type="checkbox" name="priority">
+                            <label for="mobilePriority">Toggle</label>
+                        </span>
+                        <button id="mobileSubmit" class="btn btn-disabled mobile-form--submit" type="submit">ADD</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- modal task -->
+    <div id="modalTask" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal--header--title"><span id="modalTaskPriority" class="task--priority"></span> Task</div>
+                <span id="modalTask-close" class="close">&times;</span>
+            </div>
+            <hr class="modal--hr">
+            <div class="modal-body">
+                <div id="modalTaskText" class="modalTask--text"></div> 
+            </div>
+            <div class="modal-footer">
+                <div id="modalTaskTrash" class="modaltask-trash">     
+                </div>
+                <div id="modalTaskComplete" class="modaltask-complete">
+                </div>
+            </div>
         </div>
     </div>
 </body>

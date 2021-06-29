@@ -29,8 +29,10 @@
     padding: 12px 20px;
     font-weight: 500;
     border: none;
+    cursor: pointer;
     border-radius: 4px;
     transition: all ease 0.3s;
+    background: $dark-blue;
     &-disabled{
         color: $CTA_disabled;
         background-color: $secondary-dark;
@@ -39,11 +41,18 @@
     &-active{
         color: $white;
         background-color: $CTA_Active;
+        &:hover{
+            color: $text-light;
+            background-color: $light-blue;
+        }
     }
-    &-hover{
+    &-success{
         color: $white;
-        background-color: $CTA_Active;
+        background-color: $SUCCESS;
     }
-    
+    &-danger{
+        color: $white;
+        background-color: $DANGER;
+    }
 }
 

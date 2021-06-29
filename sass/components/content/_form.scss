@@ -18,14 +18,13 @@
         color: transparent;
     }
 
-    // change input background on autocomplete
+    // fix chrome bug: change input background on autocomplete
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
         -webkit-box-shadow: 0 0 0 30px $shape-dark inset;
     }
-
     // TODO: change autocomplete background color
 }
 
@@ -71,6 +70,7 @@
     position: relative;
 }
 
+
 .toggle-switch+label:after {
     content: '';
     position: absolute;
@@ -87,10 +87,49 @@
     left: calc(100% - 5px);
     transform: translateX(-100%);
     background: $text-light;
-    // use green to improve UX
-    // background: $SUCCESS;
+    // Could use red to improve UX
+    // background: $DANGER;
 }
 
 .toggle-switch+label:active:after {
     width: 40px;
 }
+
+.modal .toggle-switch+label {
+    margin-bottom: 4px; // fix bug on mobile position - to remove
+    }
+/**
+    mobile input
+**/
+
+.mobile-form,
+.mobile-form--input{
+    width: 100%;
+}
+
+.mobile-form--checkbox {
+    margin-left: 80px;
+}
+.mobile-form--submit{
+    margin-left: auto;
+}
+.mobile-form--input{
+    margin-top: 19px;
+    margin-bottom: 30px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    color: $text-light;
+    &::placeholder {
+        color: $CTA_disabled;
+        font-weight: 500;
+    }
+       // fix chrome bug: change input background on autocomplete
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px $shape-dark inset;
+    }
+    // TODO: change autocomplete background color
+  }
