@@ -1,13 +1,14 @@
 .aside{
     max-width: 330px;
-    display: flex;
-    flex-direction: column;
     z-index: 3;
+    margin-bottom: -100px;
+    height: 100vh;
+}
+.aside-content{
+    position: fixed;
 }
 .aside--menu, .aside--logo{
     max-width: 250px;
-    // margin-left: auto;
-    // margin-right: auto;
 }
 .aside--menu--list{
     margin-top: 99px;
@@ -18,11 +19,16 @@
     align-items: center;
     color: $text-light;
     margin-bottom: 10px;
-    padding: 13px 80px 13px 20px;
+    padding: 13px 90px 13px 20px;
     border-radius: 12px;
     cursor: pointer;
+    transition: all ease 0.3s;
     &.active{
-        background-color: $CTA_disabled;
+        background-color: $dark-blue;
+        color: $white;
+    }
+    &:hover{
+        background-color: $dark-blue;
         color: $white;
     }
 }

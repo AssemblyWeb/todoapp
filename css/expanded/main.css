@@ -38,6 +38,7 @@ input[type="search"]::-webkit-search-decoration {
 body {
   background-color: #27334F;
   font-family: 'Poppins', Verdana, Geneva, Tahoma, sans-serif;
+  padding-bottom: 100px;
 }
 
 h3 {
@@ -119,22 +120,6 @@ section {
   color: #425277;
 }
 
-.fontweight-regular {
-  font-weight: 400;
-}
-
-.fontweight-medium {
-  font-weight: 500;
-}
-
-.fontweight-semibold {
-  font-weight: 600;
-}
-
-.fontweight-bold {
-  font-weight: 700;
-}
-
 .absolute {
   position: absolute;
 }
@@ -207,9 +192,13 @@ section {
 
 .aside {
   max-width: 330px;
-  display: flex;
-  flex-direction: column;
   z-index: 3;
+  margin-bottom: -100px;
+  height: 100vh;
+}
+
+.aside-content {
+  position: fixed;
 }
 
 .aside--menu, .aside--logo {
@@ -226,13 +215,19 @@ section {
   align-items: center;
   color: #CBDDF0;
   margin-bottom: 10px;
-  padding: 13px 80px 13px 20px;
+  padding: 13px 90px 13px 20px;
   border-radius: 12px;
   cursor: pointer;
+  transition: all ease 0.3s;
 }
 
 .aside--menu--link.active {
-  background-color: #425277;
+  background-color: #212944;
+  color: #FAFAFA;
+}
+
+.aside--menu--link:hover {
+  background-color: #212944;
   color: #FAFAFA;
 }
 
@@ -247,8 +242,8 @@ section {
 }
 
 .aside--settings {
-  margin-top: auto;
-  margin-bottom: 20px;
+  position: fixed;
+  bottom: 40px;
   margin-left: 20px;
   display: flex;
   color: #CBDDF0;
@@ -257,10 +252,12 @@ section {
 .aside--settings--link {
   display: flex;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .aside--settings--link:hover {
   color: #FAFAFA;
+  cursor: pointer;
 }
 
 .aside--settings--link:hover img {
@@ -422,6 +419,7 @@ section {
   width: 100%;
   font-size: 16px;
   font-weight: 500;
+  user-select: none;
 }
 
 .btn-modal span {
@@ -550,6 +548,7 @@ section {
   transition: all ease 0.3s;
   margin-left: auto;
   margin-right: 31.67px;
+  cursor: pointer;
 }
 
 .task {
@@ -610,5 +609,83 @@ section {
   transform: translateX(-100%);
   transition: all ease 0.3s;
   opacity: 0;
+}
+
+/* The container */
+.task--checkbox--label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 18px;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+}
+
+.task--checkbox--label:hover .task--checkbox--checkmark:after {
+  display: block;
+  opacity: 0.2;
+  left: 6px;
+  top: 1px;
+}
+
+/* Hide the browser's default checkbox */
+.task--checkbox--label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.task--checkbox--checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 1px solid #FAFAFA;
+  border-radius: 4px;
+}
+
+/* On mouse-over, add a grey background color */
+.task--checkbox--label:hover input ~ .task--checkbox--checkmark {
+  background-color: #27334F;
+}
+
+/* When the checkbox is checked, add a green background */
+.task--checkbox--label input:checked ~ .task--checkbox--checkmark {
+  background-color: #82C94E;
+  border: none;
+  opacity: 1;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.task--checkbox--checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.task--checkbox--label input:checked ~ .task--checkbox--checkmark:after {
+  display: block;
+  opacity: 1;
+  left: 7px;
+  top: 2px;
+}
+
+/* Style the checkmark/indicator */
+.task--checkbox--label .task--checkbox--checkmark:after {
+  border-radius: 4px;
+  left: 7px;
+  top: 2px;
+  width: 4px;
+  height: 11px;
+  border: solid #FAFAFA;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
 /*# sourceMappingURL=main.css.map */

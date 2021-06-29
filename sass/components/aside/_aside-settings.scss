@@ -1,18 +1,18 @@
 .aside--settings{
-    margin-top: auto;
-    margin-bottom: 20px;
+    position: fixed;
+    bottom: 40px;
     margin-left: 20px;
     display: flex;
     color: $text-light;
-    &:hover img{
-    }
 }
 
 .aside--settings--link{
     display: flex;
     cursor: pointer;
+    margin-bottom: 20px;
     &:hover{
         color: $white;
+        cursor: pointer;
     }
     &:hover img{
         @include crossBrowser(animation, spin 2s 0s 1 ease-in-out forwards);
@@ -20,10 +20,10 @@
 }
   @keyframes spin {
     0% {
-        transform: rotate(0deg);
+         @include crossBrowser(transform, rotate(0deg));
     }
     100% {
-        transform: rotate(360deg);
+         @include crossBrowser(transform, rotate(360deg));
     }
   }
 

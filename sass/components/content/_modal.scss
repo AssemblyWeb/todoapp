@@ -5,6 +5,7 @@
   width: 100%;
   font-size: 16px;
   font-weight: 500;
+  @include crossBrowser(user-select, none);
   & span{
     font-size: 20px;
   }

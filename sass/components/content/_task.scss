@@ -7,6 +7,7 @@
     transition: all ease 0.3s;
     margin-left: auto;
     margin-right: 31.67px;
+    cursor: pointer;
 }
 .task{
     color: $text-light;
@@ -51,11 +52,7 @@
         background: $DANGER;
     }
 }
-// task done
-// @keyframes strike{
-//     0%   { width : 0; }
-//     100% { width: 100%; }
-//   }
+
 
 .task--done{
     color: $CTA_disabled;
@@ -64,34 +61,91 @@
 
 //delete animation
 .task.delete-animation{
-transform: translateX(-100%);
-transition: all ease 0.3s;
+    @include crossBrowser(transform, translateX(-100%));
+    transition: all ease 0.3s;
     opacity: 0;
 }
 
 
 // checbox
-// .task input{
-// }
+// adapted from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_checkbox
+/* The container */
+.task--checkbox--label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 18px;
+    cursor: pointer;
+    font-size: 22px;
+    @include crossBrowser(user-select, none);
+  }
+     //add checkmark on hover
+  .task--checkbox--label:hover .task--checkbox--checkmark:after {
+    display: block;
+    opacity: 0.2;
+    left: 6px;
+    top: 1px;
+  }
 
-// .task--checkbox[type='checkbox']:after{
-//     line-height: 1.5em;
-//     content: '';
-//     display: inline-block;
-//     width: 20px;
-//     height: 20px;
-//     border: 1px solid $text-light;
-//     border-radius: 0.25em;
-//     background: $shape-dark;
-// }
-// .task--checkbox[type='checkbox']:hover:after{
-//   background: red;
-// }
-
-// .task--checkbox[type='checkbox']:checked:after {
-// width: 15px;
-//     height: 15px;
-//     content: 'x';
-//     // border: 3px solid #00ff00;
-// }
+  /* Hide the browser's default checkbox */
+  .task--checkbox--label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .task--checkbox--checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 1px solid $white;
+    border-radius: 4px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .task--checkbox--label:hover input ~ .task--checkbox--checkmark {
+    background-color: $secondary-dark;
+  }
+  
+  /* When the checkbox is checked, add a green background */
+  .task--checkbox--label input:checked ~ .task--checkbox--checkmark {
+    background-color: $SUCCESS;
+    border: none;
+    opacity: 1;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .task--checkbox--checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .task--checkbox--label input:checked ~ .task--checkbox--checkmark:after {
+    display: block;
+    opacity: 1;
+    left: 7px;
+    top: 2px;
+  }
+  
+  /* Style the checkmark/indicator */
+  .task--checkbox--label .task--checkbox--checkmark:after {
+    border-radius: 4px;
+    left: 7px;
+    top: 2px;
+    width: 4px;
+    height: 11px;
+    border: solid $white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 
