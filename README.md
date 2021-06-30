@@ -1,6 +1,8 @@
 # TODO APP:
 
-A vanilla JS app builded with SASS and any framework.
+This APP is an interview challenge where in 6 days I builded a TODO with vanilla JS, SASS and any framework.
+
+The application must be able to:
 
 - Create a task that contains text and an optional "high priority" property
 - Display highest priority tasks first in the list
