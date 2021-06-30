@@ -1,36 +1,7 @@
- // dev
- let todoList = [{
-     text: "important",
-     priority: true,
-     done: true,
-     id: 1624483295227
- }, {
-     text: "not",
-     priority: false,
-     done: false,
-     id: 16244835531
- }, {
-     text: "vit",
-     priority: true,
-     done: false,
-     id: 16244833187227
- }, {
-     text: "done",
-     priority: true,
-     done: true,
-     id: 1624483313727
- }];
- window.addEventListener('DOMContentLoaded', (event) => {
-     renderProgressList();
-     renderDoneList();
-     asideCounter();
-     //fix height if it exceeds the vh port
-     setAsideHeight();
- });
  /*
     The array to hold the list
  */
- // let todoList = [];
+ let todoList = [];
 
  /*
      Desktop form
